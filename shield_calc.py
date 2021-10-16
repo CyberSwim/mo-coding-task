@@ -22,9 +22,12 @@ def parse_numbers(input_string):
     for number in split_string:
         separated_numbers.append(int(number))
 
+    separated_numbers.sort()
+
     return separated_numbers
 
 def area_calc(dimensions):
+    
     return
 
 def shield_contingency_calc(dimensions):
