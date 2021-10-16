@@ -10,13 +10,19 @@
 # calculate contingency for wires and add to p2 answer
 
 def import_data(filePath):
-    rawData = open(filePath).read()
-    inputData = rawData.split("\n")
-    
-    return inputData
+    raw_data = open(filePath).read()
+    input_data = raw_data.split("\n")
+
+    return input_data
 
 def parse_numbers(input_string):
-    return
+    separated_numbers = []
+    split_string = input_string.split('x')
+
+    for number in split_string:
+        separated_numbers.append(int(number))
+
+    return separated_numbers
 
 def area_calc(dimensions):
     return
