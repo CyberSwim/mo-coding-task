@@ -27,8 +27,12 @@ def parse_numbers(input_string):
     return separated_numbers
 
 def area_calc(dimensions):
+    small_area = dimensions[0] * dimensions[1]
+    mid_area = dimensions[0] * dimensions[2]
+    large_area = dimensions[1] * dimensions[2]
     
-    return
+    total_area = (2 * small_area) + (2 * mid_area) + (2 * large_area)
+    return total_area
 
 def shield_contingency_calc(dimensions):
     return

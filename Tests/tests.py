@@ -11,6 +11,7 @@ class TestMethods (unittest.TestCase):
         self.assertEqual(sc.parse_numbers("99001x5031x3441"), [3441, 5031, 99001])
 
     def test_area_calc(self):
+        self.assertEqual(sc.area_calc([5, 10, 20]), 700)
         self.assertEqual(sc.area_calc([2, 5, 3]), 62)
 
     def test_shield_contingency(self):
@@ -21,4 +22,3 @@ class TestMethods (unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    
