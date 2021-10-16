@@ -9,6 +9,11 @@
 # calculate contingency for shielding and add to p1 answer
 # calculate contingency for wires and add to p2 answer
 
+def import_data(filePath):
+    rawData = open(filePath).read()
+    inputData = rawData.split("\n")
+    
+    return inputData
 
 def parse_numbers(input_string):
     return
