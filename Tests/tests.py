@@ -8,7 +8,7 @@ class TestMethods (unittest.TestCase):
     
     def test_number_separator(self):
         self.assertEqual(sc.parse_numbers("1x2x3"), [1, 2, 3])
-        self.assertEqual(sc.parse_numbers("3441x5031x99001"), [3441, 5031, 99001])
+        self.assertEqual(sc.parse_numbers("99001x5031x3441"), [3441, 5031, 99001])
 
     def test_area_calc(self):
         self.assertEqual(sc.area_calc([2, 5, 3]), 62)
@@ -21,3 +21,4 @@ class TestMethods (unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
