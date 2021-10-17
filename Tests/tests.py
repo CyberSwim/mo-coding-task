@@ -5,6 +5,7 @@ class TestMethods (unittest.TestCase):
 
     def test_data_import(self):
         self.assertEqual(sc.import_data(".\Tests\example1.txt"), ['2x3x4', '1x10x1', '5x7x4'])
+        self.assertEqual(sc.import_data(), [""])
     
     def test_number_separator(self):
         self.assertEqual(sc.parse_numbers("1x2x3"), [1, 2, 3])
