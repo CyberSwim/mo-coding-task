@@ -1,10 +1,10 @@
 """Calculates amount of wiring and shielding required for a small
 weather satellite."""
 
-import sys
 from os import path
 
 # Specify the location of data here
+# Leave blank if using `input.txt`
 input_file = ""
 
 
