@@ -44,9 +44,12 @@ def parse_numbers(input_string):
     return separated_numbers
 
 
-def area_calc(dimensions):
+def area_calc(dimensions, type = ""):
     """Calculates the total area of a cuboid when given a
     sorted list of the dimensions.
+
+    If `type` "shield" or "wire" is passed, total area will include
+    the area of extra provisioned material.
     
     """
 
@@ -55,11 +58,11 @@ def area_calc(dimensions):
     large_area = dimensions[1] * dimensions[2]
     
     total_area = (2 * small_area) + (2 * mid_area) + (2 * large_area)
+
+    if type == "shield":
+        total_area += small_area
+    
+    elif type == "wire":
+        total_area += (2 * dimensions[0]) + (2 * dimensions[1])
+
     return total_area
-
-
-def shield_contingency_calc(dimensions):
-    return dimensions[0] * dimensions[1]
-
-def wire_contingency_calc(dimensions):
-    return (2 * dimensions[0]) + (2 * dimensions[1])

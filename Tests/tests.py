@@ -5,8 +5,9 @@ class TestMethods (unittest.TestCase):
 
     def test_data_import(self):
         self.assertEqual(wsc.import_data(".\Tests\example1.txt"), ['2x3x4', '1x10x1', '5x7x4'])
-        self.assertEqual(wsc.import_data(), [""])
-        
+        self.assertEqual(wsc.import_data(), [""]) # tests function with no parameters
+
+        # tests incorrect path handling
         with self.assertRaises(FileNotFoundError): wsc.import_data("C:\Fake Path")
     
     def test_number_separator(self):
@@ -15,13 +16,12 @@ class TestMethods (unittest.TestCase):
 
     def test_area_calc(self):
         self.assertEqual(wsc.area_calc([5, 10, 20]), 700)
-        self.assertEqual(wsc.area_calc([2, 5, 3]), 62)
+        self.assertEqual(wsc.area_calc([2, 3, 5]), 62)
 
-    def test_shield_contingency(self):
-        self.assertEqual(wsc.shield_contingency_calc([2, 6, 10]), 12)
-
-    def test_wire_contingency(self):
-        self.assertEqual(wsc.wire_contingency_calc([2, 3, 8]), 10)
+        self.assertEqual(wsc.area_calc([4, 6, 6], "shield"), 192)
+        self.assertEqual(wsc.area_calc([2, 2, 5], "wire"), 56)
+        self.assertEqual(wsc.area_calc([1, 3, 4], "plastic"), 38)
+        
 
 if __name__ == '__main__':
     unittest.main()
