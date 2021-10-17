@@ -35,7 +35,7 @@ def area_calc(dimensions):
     return total_area
 
 def shield_contingency_calc(dimensions):
-    return
+    return dimensions[0] * dimensions[1]
 
 def wire_contingency_calc(dimensions):
-    return
+    return (2 * dimensions[0]) + (2 * dimensions[1])

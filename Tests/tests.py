@@ -15,10 +15,10 @@ class TestMethods (unittest.TestCase):
         self.assertEqual(sc.area_calc([2, 5, 3]), 62)
 
     def test_shield_contingency(self):
-        self.assertEqual(sc.shield_contingency_calc([10, 6, 2]), 12)
+        self.assertEqual(sc.shield_contingency_calc([2, 6, 10]), 12)
 
     def test_wire_contingency(self):
-        self.assertEqual(sc.wire_contingency_calc([2, 8, 3]), 10)
+        self.assertEqual(sc.wire_contingency_calc([2, 3, 8]), 10)
 
 if __name__ == '__main__':
     unittest.main()
