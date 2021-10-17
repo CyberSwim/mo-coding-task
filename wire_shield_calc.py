@@ -11,9 +11,10 @@ def import_data(filePath = ".\input.txt"):
     
     """
 
-    raw_data = open(filePath).read()
-    input_data = raw_data.split("\n")
+    with open(filePath) as f:
+        raw_data = f.read()
 
+    input_data = raw_data.split("\n")
     return input_data
 
 
