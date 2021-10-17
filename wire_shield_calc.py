@@ -1,8 +1,13 @@
 """Calculates amount of wiring and shielding required for a small
 weather satellite."""
 
+from os import path
 
-def import_data(filePath = ".\input.txt"):
+# Specify the location of data to be read
+filePath = ""
+
+
+def import_data(fileName = ".\input.txt"):
     """Imports and formats data from text file.
 
     Defaults to "input.txt" if no other path is specified.
@@ -11,11 +16,15 @@ def import_data(filePath = ".\input.txt"):
     
     """
 
-    with open(filePath) as f:
-        raw_data = f.read()
+    if path.exists(fileName):
+        with open(fileName) as f:
+            raw_data = f.read()
 
-    input_data = raw_data.split("\n")
-    return input_data
+        input_data = raw_data.split("\n")
+        return input_data
+    
+    else:
+        raise FileNotFoundError
 
 
 def parse_numbers(input_string):
