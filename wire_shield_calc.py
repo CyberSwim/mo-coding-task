@@ -44,7 +44,7 @@ def parse_numbers(input_string):
     return separated_numbers
 
 
-def area_calc(dimensions, type = ""):
+def area_calc(dimensions, type):
     """Calculates the total area of a cuboid when given a
     sorted list of the dimensions.
 
@@ -53,16 +53,40 @@ def area_calc(dimensions, type = ""):
     
     """
 
+    total = 0
+
     small_area = dimensions[0] * dimensions[1]
     mid_area = dimensions[0] * dimensions[2]
     large_area = dimensions[1] * dimensions[2]
     
-    total_area = (2 * small_area) + (2 * mid_area) + (2 * large_area)
-
     if type == "shield":
-        total_area += small_area
+        total = (3 * small_area) + (2 * mid_area) + (2 * large_area)
     
     elif type == "wire":
-        total_area += (2 * dimensions[0]) + (2 * dimensions[1])
+        volume = dimensions[0] * dimensions [1] * dimensions [2]
+        total = volume + (2 * dimensions[0]) + (2 * dimensions[1])
 
-    return total_area
+    return total
+
+
+def calculate_result(filePath):
+    """Calculates the total sum of shielding and wiring needed from
+    a given data set.
+    
+    """
+
+    data = import_data(filePath)
+    shield = []
+    wire = []
+
+    for item in data:
+        shield.append(area_calc(parse_numbers(item), "shield"))
+        wire.append(area_calc(parse_numbers(item), "wire"))
+    
+    total_shield = sum(shield)
+    total_wire = sum(wire)
+
+    print ("Total shield area:\n" + str(total_shield) + "\n")
+    print ("Total wire area:\n" + str(total_wire) + "\n\n")
+
+    return total_shield, total_wire
