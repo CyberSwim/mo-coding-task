@@ -1,13 +1,14 @@
 """Calculates amount of wiring and shielding required for a small
 weather satellite."""
 
+import sys
 from os import path
 
-# Specify the location of data to be read
-filePath = ""
+# Specify the location of data here
+input_file = ""
 
 
-def import_data(fileName = ".\input.txt"):
+def import_data(file_name = ".\input.txt"):
     """Imports and formats data from text file.
 
     Defaults to "input.txt" if no other path is specified.
@@ -16,11 +17,11 @@ def import_data(fileName = ".\input.txt"):
     
     """
 
-    if path.exists(fileName):
-        with open(fileName) as f:
+    if path.exists(file_name):
+        with open(file_name) as f:
             raw_data = f.read()
+            input_data = raw_data.split("\n")
 
-        input_data = raw_data.split("\n")
         return input_data
     
     else:
@@ -69,13 +70,23 @@ def area_calc(dimensions, type):
     return total
 
 
-def calculate_result(filePath):
+def calculate_result(file_path):
     """Calculates the total sum of shielding and wiring needed from
     a given data set.
     
     """
 
-    data = import_data(filePath)
+    # Handles blank file path
+    if path.exists(file_path):
+        data = import_data(file_path)
+    else:
+        data = import_data()
+    
+    # if index.txt is empty
+    if data == ['']:
+        print ("No data found in \"input.txt\"")
+        return
+    
     shield = []
     wire = []
 
@@ -90,3 +101,7 @@ def calculate_result(filePath):
     print ("Total wire area:\n" + str(total_wire) + "\n\n")
 
     return total_shield, total_wire
+
+
+# Execute program
+calculate_result (input_file)
