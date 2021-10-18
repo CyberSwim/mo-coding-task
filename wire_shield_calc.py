@@ -1,7 +1,7 @@
 """Calculates amount of wiring and shielding required for a small
 weather satellite."""
 
-from os import path
+from os import close, path
 
 # Specify the location of data here
 # Leave blank to default to `input.txt`
@@ -26,6 +26,11 @@ def import_data(file_name):
     # Handles blank or incorrect file path, defaults to input.txt
     else:
         print ("File not found \'" + file_name + "\', defaulting to \'input.txt\'")
+
+        if path.exists(".\input.txt") == False:
+            with open("input.txt", 'w') as f:
+                print("Creating new file \'input.txt\' as file did not exist.")
+
         return import_data(".\input.txt")
 
 
