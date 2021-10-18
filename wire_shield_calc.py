@@ -55,17 +55,20 @@ def area_calc(dimensions, type):
     """
 
     total = 0
+    height = dimensions[0]
+    width = dimensions[1]
+    length = dimensions[2]
 
-    small_area = dimensions[0] * dimensions[1]
-    mid_area = dimensions[0] * dimensions[2]
-    large_area = dimensions[1] * dimensions[2]
+    small_area = height * width
+    mid_area = height * length
+    large_area = width * length
     
     if type == "shield":
         total = (3 * small_area) + (2 * mid_area) + (2 * large_area)
     
     elif type == "wire":
-        volume = dimensions[0] * dimensions [1] * dimensions [2]
-        total = volume + (2 * dimensions[0]) + (2 * dimensions[1])
+        volume = height * width * length
+        total = volume + (2 * height) + (2 * width)
 
     return total
 
