@@ -1,7 +1,7 @@
 """Calculates amount of wiring and shielding required for a small
 weather satellite."""
 
-from os import close, path
+from os import path
 
 # Specify the location of data here
 # Leave blank to default to `input.txt`
