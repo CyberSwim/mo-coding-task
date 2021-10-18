@@ -4,11 +4,11 @@ weather satellite."""
 from os import path
 
 # Specify the location of data here
-# Leave blank if using `input.txt`
+# Leave blank to default to `input.txt`
 input_file = ""
 
 
-def import_data(file_name = ".\input.txt"):
+def import_data(file_name):
     """Imports and formats data from text file.
 
     Defaults to "input.txt" if no other path is specified.
@@ -21,11 +21,12 @@ def import_data(file_name = ".\input.txt"):
         with open(file_name) as f:
             raw_data = f.read()
             input_data = raw_data.split("\n")
+            return input_data
 
-        return input_data
-    
+    # Handles blank or incorrect file path, defaults to input.txt
     else:
-        raise FileNotFoundError
+        print ("File not found \'" + file_name + "\', defaulting to \'input.txt\'")
+        return import_data(".\input.txt")
 
 
 def parse_numbers(input_string):
@@ -55,6 +56,7 @@ def area_calc(dimensions, type):
     """
 
     total = 0
+
     height = dimensions[0]
     width = dimensions[1]
     length = dimensions[2]
@@ -78,20 +80,16 @@ def calculate_result(file_path):
     a given data set.
     
     """
-
-    # Handles blank file path
-    if path.exists(file_path):
-        data = import_data(file_path)
-    else:
-        data = import_data()
-    
-    # if index.txt is empty
-    if data == ['']:
-        print ("No data found in \"input.txt\"")
-        return
     
     shield = []
     wire = []
+
+    data = import_data(file_path)
+
+    # Handles empty files
+    if len(data[0]) < 1:
+        print ("No data found in \"input.txt\"")
+        return None
 
     for item in data:
         shield.append(area_calc(parse_numbers(item), "shield"))

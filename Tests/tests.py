@@ -9,10 +9,10 @@ class TestMethods (unittest.TestCase):
     # Tests the `import_data` function
     def test_data_import(self):
         self.assertEqual(wsc.import_data(".\Tests\example1.txt"), ['2x3x4', '1x10x1', '5x7x4'])
-        self.assertEqual(wsc.import_data(), [""]) # tests function with no parameters
+        self.assertEqual(wsc.import_data(""), ['']) # tests function with no parameters
 
         # tests incorrect path handling
-        with self.assertRaises(FileNotFoundError): wsc.import_data("C:\Fake Path")
+        self.assertEqual(wsc.import_data("C:\Fake Path"), [''])
     
     # Tests the `parse_numbers` function
     def test_number_separator(self):
